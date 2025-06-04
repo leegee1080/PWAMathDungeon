@@ -1,0 +1,16 @@
+{
+    "name": "Math Dungeon",
+    "short_name": "MathDungeon",
+    "description": "A math-based dungeon crawler PWA",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#333",
+    "theme_color": "#666",
+    "icons": [
+        {
+            "src": "graphics/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
