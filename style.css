@@ -45,7 +45,7 @@ body {
     margin-bottom: 40px;
 }
 
-.number-btn, #skip-btn, #reset-btn {
+.number-btn, #skip-btn, #heal-btn, #reset-btn {
     padding: 15px;
     font-size: 1.2em;
     background-color: #333;
@@ -56,11 +56,11 @@ body {
     transition: background-color 0.2s;
 }
 
-.number-btn:hover, #skip-btn:hover, #reset-btn:hover {
+.number-btn:hover, #skip-btn:hover, #heal-btn:hover, #reset-btn:hover {
     background-color: #555;
 }
 
-#skip-btn:disabled, #reset-btn:disabled, .number-btn:disabled {
+.number-btn:disabled, #skip-btn:disabled, #heal-btn:disabled, #reset-btn:disabled {
     background-color: #222;
     cursor: not-allowed;
 }
@@ -69,6 +69,13 @@ body {
     position: absolute;
     bottom: 20px;
     left: 20px;
+}
+
+#heal-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #reset-btn {

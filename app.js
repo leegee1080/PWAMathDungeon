@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreElement = document.getElementById('score');
     const hpElement = document.getElementById('hp');
     const skipBtn = document.getElementById('skip-btn');
+    const healBtn = document.getElementById('heal-btn');
     const resetBtn = document.getElementById('reset-btn');
     const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -18,15 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
         score = newScore;
         scoreElement.textContent = `Score: ${score}`;
         skipBtn.disabled = score < 50 || isGameOver;
+        healBtn.disabled = score < 200 || hp >= 100 || isGameOver;
     }
 
     function updateHP(newHP) {
-        hp = newHP;
+        hp = Math.min(100, newHP);
         hpElement.textContent = `HP: ${hp}`;
+        healBtn.disabled = score < 200 || hp >= 100 || isGameOver;
         if (hp <= 0) {
             isGameOver = true;
             numberButtons.forEach(btn => btn.disabled = true);
             skipBtn.disabled = true;
+            healBtn.disabled = true;
             resetBtn.disabled = true;
             hpElement.classList.add('hp-flash-red');
             setTimeout(() => {
@@ -59,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isGameOver = false;
         numberButtons.forEach(btn => btn.disabled = false);
         skipBtn.disabled = score < 50;
+        healBtn.disabled = score < 200 || hp >= 100;
         resetBtn.disabled = false;
         newProblem();
     }
@@ -91,6 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (score >= 50 && !isGameOver) {
             updateScore(score - 50);
             newProblem();
+        }
+    });
+
+    healBtn.addEventListener('click', () => {
+        if (score >= 200 && hp < 100 && !isGameOver) {
+            updateScore(score - 200);
+            updateHP(hp + 20);
         }
     });
 
