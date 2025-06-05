@@ -60,7 +60,7 @@ body {
     background-color: #555;
 }
 
-#skip-btn:disabled, #reset-btn:disabled {
+#skip-btn:disabled, #reset-btn:disabled, .number-btn:disabled {
     background-color: #222;
     cursor: not-allowed;
 }
@@ -82,7 +82,7 @@ body {
 }
 
 .flash-red {
-    animation: flash-red 0.5s 3;
+    animation: flash-red 0.5s 1;
 }
 
 .hp-flash-red {

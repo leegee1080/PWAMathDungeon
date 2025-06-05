@@ -12,17 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentAnswer;
     let currentProblem;
     let timer;
+    let isGameOver = false;
 
     function updateScore(newScore) {
         score = newScore;
         scoreElement.textContent = `Score: ${score}`;
-        skipBtn.disabled = score < 50;
+        skipBtn.disabled = score < 50 || isGameOver;
     }
 
     function updateHP(newHP) {
         hp = newHP;
         hpElement.textContent = `HP: ${hp}`;
         if (hp <= 0) {
+            isGameOver = true;
+            numberButtons.forEach(btn => btn.disabled = true);
+            skipBtn.disabled = true;
+            resetBtn.disabled = true;
             hpElement.classList.add('hp-flash-red');
             setTimeout(() => {
                 hpElement.classList.remove('hp-flash-red');
@@ -43,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             () => {
                 timerElement.classList.add('flash-red');
                 updateHP(hp - 10);
-                setTimeout(newProblem, 1500);
+                setTimeout(newProblem, 500);
             }
         );
     }
@@ -51,14 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetGame() {
         updateScore(100);
         updateHP(100);
+        isGameOver = false;
+        numberButtons.forEach(btn => btn.disabled = false);
+        skipBtn.disabled = score < 50;
+        resetBtn.disabled = false;
         newProblem();
     }
 
     numberButtons.forEach(button => {
         button.addEventListener('click', () => {
+            if (isGameOver) return;
             const guess = parseInt(button.textContent);
-            clearInterval(timer);
             if (guess === currentAnswer) {
+                clearInterval(timer);
                 problemElement.textContent = currentProblem.replace('_', guess);
                 problemElement.classList.add('flash-green');
                 const timeLeft = parseFloat(timerElement.textContent);
@@ -72,20 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateHP(hp - 10);
                 setTimeout(() => {
                     problemElement.classList.remove('flash-red');
-                    newProblem();
-                }, 1500);
+                }, 500);
             }
         });
     });
 
     skipBtn.addEventListener('click', () => {
-        if (score >= 50) {
+        if (score >= 50 && !isGameOver) {
             updateScore(score - 50);
             newProblem();
         }
     });
 
-    resetBtn.addEventListener('click', resetGame);
+    resetBtn.addEventListener('click', () => {
+        if (!isGameOver) {
+            resetGame();
+        }
+    });
 
     newProblem();
 });
