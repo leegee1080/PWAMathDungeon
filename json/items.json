@@ -1,7 +1,0 @@
-[
-    { "name": "Iron Sword", "consumable": false, "rarity": 5, "effect": "damageBoost", "magnitude": 5 },
-    { "name": "Math Mace", "consumable": false, "rarity": 3, "effect": "damageBoost", "magnitude": 10 },
-    { "name": "Super Shield", "consumable": true, "rarity": 2, "effect": "blockDamage", "magnitude": 1 },
-    { "name": "Wizard's Watch", "consumable": false, "rarity": 2, "effect": "timeBoost", "magnitude": 1 },
-    { "name": "Health Potion", "consumable": true, "rarity": 5, "effect": "heal", "magnitude": 30 }
-]

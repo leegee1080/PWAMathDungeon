@@ -1,23 +1,24 @@
+const CACHE_NAME = 'word-shop-cache-v1';
+const urlsToCache = [
+    '/',
+    '/index.html',
+    '/style.css',
+    '/app.js',
+    '/jshelpers/mathGenerator.js',
+    '/jshelpers/gameLogic.js',
+    '/icon.png'
+];
+
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open('math-dungeon-v1').then(cache => {
-            return cache.addAll([
-                'index.html',
-                'styles.css',
-                'manifest.json',
-                'graphics/icon.png',
-                'jshelpers/game.js',
-                'json/monsters.json',
-                'json/items.json'
-            ]);
-        })
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
     );
 });
 
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
-        })
+        caches.match(event.request)
+            .then(response => response || fetch(event.request))
     );
 });

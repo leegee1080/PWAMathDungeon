@@ -1,111 +1,105 @@
 body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #333;
-    font-family: Arial, sans-serif;
-    color: white;
     overflow: hidden;
 }
-#gameCanvas {
-    border: 2px solid #666;
-    background: #222;
-}
-#problemDisplay {
-    position: absolute;
-    top: 20px;
-    font-size: 24px;
-    text-align: center;
-    width: 100%;
-}
-#timerDisplay {
-    position: absolute;
-    top: 50px;
-    font-size: 18px;
-    text-align: center;
-    width: 100%;
-}
-#numberButtons {
-    position: absolute;
-    bottom: 20px;
+
+#game-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    width: 95vw;
+    max-width: 600px;
+    height: 95vh;
+    padding: 10px;
+    box-sizing: border-box;
 }
-.numberButton {
-    margin: 5px;
-    padding: 10px 15px;
-    font-size: 18px;
-    background: #444;
-    border: 2px solid #666;
-    color: white;
-    cursor: pointer;
+
+#timer {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#score, #hp {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#problem {
+    font-size: 3em;
+    margin: 20px 0;
+    text-align: center;
+    min-height: 60px;
+}
+
+#number-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.number-btn, #skip-btn, #reset-btn {
+    padding: 15px;
+    font-size: 1.2em;
+    background-color: #333;
+    color: #fff;
+    border: none;
     border-radius: 5px;
-}
-.numberButton:hover {
-    background: #555;
-}
-#inventory {
-    position: absolute;
-    bottom: 60px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.inventorySlot {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #666;
-    margin: 5px;
-    background: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
-#levelUpMenu {
+
+.number-btn:hover, #skip-btn:hover, #reset-btn:hover {
+    background-color: #555;
+}
+
+#skip-btn:disabled, #reset-btn:disabled {
+    background-color: #222;
+    cursor: not-allowed;
+}
+
+#skip-btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #444;
-    padding: 20px;
-    border: 2px solid #666;
-    display: none;
-    flex-direction: column;
-    align-items: center;
+    bottom: 10px;
+    left: 10px;
 }
-#levelUpMenu button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background: #555;
-    border: 2px solid #666;
-    color: white;
-    cursor: pointer;
-}
-#gameOverMenu {
+
+#reset-btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #444;
-    padding: 20px;
-    border: 2px solid #666;
-    display: none;
-    flex-direction: column;
-    align-items: center;
+    bottom: 10px;
+    right: 10px;
 }
-#continueButton {
-    position: absolute;
-    bottom: 100px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background: #555;
-    border: 2px solid #666;
-    color: white;
-    cursor: pointer;
-    display: none;
+
+.flash-green {
+    animation: flash-green 0.5s 5;
+}
+
+.flash-red {
+    animation: flash-red 0.5s 3;
+}
+
+@keyframes flash-green {
+    0% { background-color: #1a1a1a; }
+    50% { background-color: #00ff00; }
+    100% { background-color: #1a1a1a; }
+}
+
+@keyframes flash-red {
+    0% { background-color: #1a1a1a; }
+    50% { background-color: #ff0000; }
+    100% { background-color: #1a1a1a; }
+}
+
+@media (max-width: 400px) {
+    #problem { font-size: 2em; }
+    .number-btn { padding: 10px; font-size: 1em; }
+    #timer { font-size: 1.5em; }
+    #score, #hp { font-size: 1.2em; }
 }
