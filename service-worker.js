@@ -1,4 +1,4 @@
-const CACHE_NAME = 'word-shop-cache-v1';
+const CACHE_NAME = 'math-dungeon-cache-v1';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -6,7 +6,8 @@ const urlsToCache = [
     '/app.js',
     '/jshelpers/mathGenerator.js',
     '/jshelpers/gameLogic.js',
-    '/icon.png'
+    '/icon.png',
+    '/manifest.json',
 ];
 
 self.addEventListener('install', event => {
