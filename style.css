@@ -26,7 +26,12 @@ body {
     margin-bottom: 20px;
 }
 
-#score, #hp {
+#score {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#hp {
     font-size: 1.5em;
     margin-bottom: 20px;
 }
@@ -94,7 +99,11 @@ body {
 }
 
 .flash-green {
-    animation: flash-green 0.5s 5;
+    animation: flash-green 0.5s 3;
+}
+
+.score-flash-green {
+    animation: flash-green 0.5s 1;
 }
 
 .flash-red {
@@ -121,6 +130,7 @@ body {
     #problem { font-size: 2em; }
     .number-btn { padding: 10px; font-size: 1em; }
     #timer { font-size: 1.5em; }
-    #score, #hp { font-size: 1.2em; }
+    #score { font-size: 1.7em; }
+    #hp { font-size: 1.2em; }
     .cost-label { font-size: 0.6em; }
 }

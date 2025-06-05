@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateScore(newScore) {
         score = newScore;
         scoreElement.textContent = `Score: ${score}`;
+        scoreElement.classList.add('score-flash-green');
+        setTimeout(() => {
+            scoreElement.classList.remove('score-flash-green');
+        }, 500);
         skipBtn.disabled = score < 50 || isGameOver;
         healBtn.disabled = score < 200 || hp >= 100 || isGameOver;
     }
@@ -58,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resetGame() {
-        updateScore(100);
+        score = 100;
+        scoreElement.textContent = `Score: ${score}`;
         updateHP(100);
         isGameOver = false;
         numberButtons.forEach(btn => btn.disabled = false);
@@ -81,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     problemElement.classList.remove('flash-green');
                     newProblem();
-                }, 2500);
+                }, 1500);
             } else {
                 problemElement.classList.add('flash-red');
                 updateHP(hp - 10);
@@ -94,14 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skipBtn.addEventListener('click', () => {
         if (score >= 50 && !isGameOver) {
-            updateScore(score - 50);
+            score = score - 50;
+            scoreElement.textContent = `Score: ${score}`;
+            skipBtn.disabled = score < 50;
+            healBtn.disabled = score < 200 || hp >= 100;
             newProblem();
         }
     });
 
     healBtn.addEventListener('click', () => {
         if (score >= 200 && hp < 100 && !isGameOver) {
-            updateScore(score - 200);
+            score = score - 200;
+            scoreElement.textContent = `Score: ${score}`;
+            skipBtn.disabled = score < 50;
+            healBtn.disabled = score < 200 || hp >= 100;
             updateHP(hp + 20);
         }
     });
