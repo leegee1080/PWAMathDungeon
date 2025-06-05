@@ -62,6 +62,10 @@ body {
     transition: background-color 0.2s;
 }
 
+#skip-btn, #heal-btn, #reset-btn {
+    width: 120px;
+}
+
 .number-btn:hover, #skip-btn:hover, #heal-btn:hover, #reset-btn:hover {
     background-color: #555;
 }
@@ -96,10 +100,11 @@ body {
     right: 5px;
     font-size: 0.7em;
     opacity: 0.7;
+    white-space: nowrap;
 }
 
 .flash-green {
-    animation: flash-green 0.5s 3;
+    animation: flash-green 0.5s 1;
 }
 
 .score-flash-green {
@@ -133,4 +138,5 @@ body {
     #score { font-size: 1.7em; }
     #hp { font-size: 1.2em; }
     .cost-label { font-size: 0.6em; }
+    #skip-btn, #heal-btn, #reset-btn { width: 100px; }
 }

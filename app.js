@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     problemElement.classList.remove('flash-green');
                     newProblem();
-                }, 1500);
+                }, 500);
             } else {
                 problemElement.classList.add('flash-red');
                 updateHP(hp - 10);
