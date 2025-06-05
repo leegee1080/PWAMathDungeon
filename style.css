@@ -64,6 +64,11 @@ body {
 
 #skip-btn, #heal-btn, #reset-btn {
     width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .number-btn:hover, #skip-btn:hover, #heal-btn:hover, #reset-btn:hover {
@@ -138,5 +143,5 @@ body {
     #score { font-size: 1.7em; }
     #hp { font-size: 1.2em; }
     .cost-label { font-size: 0.6em; }
-    #skip-btn, #heal-btn, #reset-btn { width: 100px; }
+    #skip-btn, #heal-btn, #reset-btn { width: 100px; height: 100px; }
 }

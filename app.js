@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isGameOver = false;
         numberButtons.forEach(btn => btn.disabled = false);
         skipBtn.disabled = score < 50;
-        healBtn.disabled = score < 200 || hp >= 100;
+        healBtn.disabled = true; // Initial score (100) < 200
         resetBtn.disabled = false;
         newProblem();
     }
@@ -123,5 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    healBtn.disabled = true; // Disable heal button on start
     newProblem();
 });
