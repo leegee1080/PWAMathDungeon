@@ -46,6 +46,7 @@ body {
 }
 
 .number-btn, #skip-btn, #heal-btn, #reset-btn {
+    position: relative;
     padding: 15px;
     font-size: 1.2em;
     background-color: #333;
@@ -84,6 +85,14 @@ body {
     right: 20px;
 }
 
+.cost-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+
 .flash-green {
     animation: flash-green 0.5s 5;
 }
@@ -113,4 +122,5 @@ body {
     .number-btn { padding: 10px; font-size: 1em; }
     #timer { font-size: 1.5em; }
     #score, #hp { font-size: 1.2em; }
+    .cost-label { font-size: 0.6em; }
 }
