@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 100;
     let hp = 100;
     let currentAnswer;
+    let currentProblem;
     let timer;
 
     function updateScore(newScore) {
@@ -22,8 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         hp = newHP;
         hpElement.textContent = `HP: ${hp}`;
         if (hp <= 0) {
-            alert('Game Over! Resetting game...');
-            resetGame();
+            hpElement.classList.add('hp-flash-red');
+            setTimeout(() => {
+                hpElement.classList.remove('hp-flash-red');
+                resetGame();
+            }, 2500);
         }
     }
 
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timer);
         const { problem, answer } = generateMathProblem();
         problemElement.textContent = problem;
+        currentProblem = problem;
         currentAnswer = answer;
         timerElement.classList.remove('flash-red');
         timer = startTimer(
@@ -54,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const guess = parseInt(button.textContent);
             clearInterval(timer);
             if (guess === currentAnswer) {
+                problemElement.textContent = currentProblem.replace('_', guess);
                 problemElement.classList.add('flash-green');
                 const timeLeft = parseFloat(timerElement.textContent);
                 updateScore(score + calculateScore(timeLeft));
