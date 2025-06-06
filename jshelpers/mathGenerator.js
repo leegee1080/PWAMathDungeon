@@ -28,7 +28,7 @@ function generateMathProblem() {
                 problem = `_ + ${num2} = ${answer}`;
             } else if (blankPosition === 1) {
                 // num1 + _ = answer
-                num1 = Math.floor(Math.random() * (9 - answer)) + 1; // Ensure result <= 9
+                num1 = Math.floor(Math.random() * answer); // Ensure num2 = answer - num1 >= 0
                 num2 = answer - num1;
                 problem = `${num1} + _ = ${answer}`;
             } else {
