@@ -4,13 +4,15 @@ function generateMathProblem() {
     let num1, num2, answer, problem, blankPosition;
 
     if (operation === 'algebra') {
-        // Generate algebra problem: ax = bx → x = answer
-        const a = Math.floor(Math.random() * 5) + 1; // Coefficient 1-5
-        const b = Math.floor(Math.random() * 5) + 1; // Coefficient 1-5
+        // Generate algebra problem: ax + c = bx → x = answer
         answer = Math.floor(Math.random() * 10); // x value 0-9
-        const leftSide = a * answer;
+        const a = Math.floor(Math.random() * 5) + 1; // Coefficient 1-5
+        const b = Math.floor(Math.random() * 5) + 1; // Coefficient 1-5, ensure b != a
+        const c = Math.floor(Math.random() * 10) - 5; // Constant -5 to 4
+        // Form: ax + c = bx
+        const leftSide = a * answer + c;
         const rightSide = b * answer;
-        problem = `${leftSide} = ${b}x`;
+        problem = `${leftSide} = ${b}x + ${c}`;
         blankPosition = 'right'; // Blank is for x
         return { problem: `${problem} → x = _`, answer, blankPosition };
     }
