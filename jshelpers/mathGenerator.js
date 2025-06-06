@@ -10,7 +10,7 @@ function generateMathProblem() {
         const c = (b - a) * answer; // Ensure x = answer is valid
         const leftSide = a * answer + c;
         const rightSide = b * answer;
-        problem = `${leftSide} = ${b}x + ${c}\nx = _`;
+        problem = `${leftSide} = ${b}x + ${c} → x = _`;
         blankPosition = 'right'; // Blank is for x
         return { problem, answer, blankPosition };
     }
