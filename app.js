@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let hp = 100;
     let currentAnswer;
     let currentProblem;
+    let currentBlankPosition;
     let timer;
     let isGameOver = false;
 
@@ -46,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function newProblem() {
         clearInterval(timer);
-        const { problem, answer } = generateMathProblem();
+        const { problem, answer, blankPosition } = generateMathProblem();
         problemElement.textContent = problem;
         currentProblem = problem;
         currentAnswer = answer;
+        currentBlankPosition = blankPosition;
         timerElement.classList.remove('flash-red');
         timer = startTimer(
             time => timerElement.textContent = time,
@@ -79,7 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const guess = parseInt(button.textContent);
             if (guess === currentAnswer) {
                 clearInterval(timer);
-                problemElement.textContent = currentProblem.replace('_', guess);
+                let displayProblem = currentProblem;
+                if (currentBlankPosition === 'right') {
+                    displayProblem = currentProblem.replace('_', guess);
+                } else if (currentBlankPosition === 0) {
+                    displayProblem = currentProblem.replace('_', guess);
+                } else if (currentBlankPosition === 1) {
+                    displayProblem = currentProblem.replace('_', guess);
+                } else {
+                    displayProblem = currentProblem.replace('_', guess);
+                }
+                problemElement.textContent = displayProblem;
                 problemElement.classList.add('flash-green');
                 const timeLeft = parseFloat(timerElement.textContent);
                 updateScore(score + calculateScore(timeLeft));
