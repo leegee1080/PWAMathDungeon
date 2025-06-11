@@ -83,7 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(timer);
                 let displayProblem = currentProblem;
                 if (currentBlankPosition === 'right') {
-                    displayProblem = currentProblem.replace('x = _', `x = ${guess}`);
+                    displayProblem = currentProblem.replace('_', guess);
+                } else if (currentBlankPosition === 0) {
+                    displayProblem = currentProblem.replace('_', guess);
+                } else if (currentBlankPosition === 1) {
+                    displayProblem = currentProblem.replace('_', guess);
                 } else {
                     displayProblem = currentProblem.replace('_', guess);
                 }
