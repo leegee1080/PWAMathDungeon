@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             scoreElement.classList.remove('score-flash-green');
         }, 500);
-        updateMinTimeScore(score); // Update the minimum score for timer
         skipBtn.disabled = score < 50 || isGameOver;
         healBtn.disabled = score < 200 || hp >= 100 || isGameOver;
     }
@@ -71,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         skipBtn.disabled = score < 50;
         healBtn.disabled = true; // Initial score (100) < 200
         resetBtn.disabled = false;
-        localStorage.setItem('minTimeScore', '0'); // Reset timer threshold
         newProblem();
     }
 
